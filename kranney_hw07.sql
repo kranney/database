@@ -14,4 +14,13 @@ CREATE OR REPLACE PROCEDURE singles_and_doubles_<40
 	WHERE price < MONEY(40)
 		AND (type = 'Double' OR type = 'Family')
 	ORDER BY price;
-'--'
+--3)
+
+CREATE TRIGGER double_rooms_>100
+	BEFORE INSERT ON Room
+	REFERENCING NEW AS new_room
+	BEGIN
+		IF new_room.type = 'Double' AND new_room.price > MONEY(100)
+			raise_application_error('')
+		END IF;
+	END;
