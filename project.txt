@@ -1,9 +1,14 @@
-I want to create a database for the college.
-My tables will be students, staff, professors, adjucts, and maintance.
-The functions I would create would be of course add, update, delete.
-I will create a view_pay function that will allow the user to view the pay of a particular employee.
-I will create a pay_raise function that will allow the user to give a pay raise to a particular employee.
-I will have a delete_employee function that will allow the user to delete an employee from the database.
-There will be an add_employee where the user will be able to add an employee to a particular table.
-The user will be able to utilize a promote_employee function that will allow a user to move from a lower rank to a higher rank.
-There will be a view_employee function that will allow the user to see what department a particular employee is in, his/her role in that position, and an employee number.
+﻿	The user will be able to add, remove, and update students to student table. There will be a department table. The department will have two attributes. There will be a professor table. The professor table will show what courses the professor is teaching. The user will be able to view the yearly salary, if the professor is full time or an adjunct,  the first and last name of the professor, what department he/she teaches in, etc. 
+
+Student (grad_year, advisor, gpa, number, major_01, major_02, minor_01, minor_02, class_standing)
+Department ( name, chairman, professors, majors, minors)
+Course (number_of_students, number, counts_to_what_major)
+Professors ( number, pay, degree, first_name, last_name, department)
+
+Functions:
+First the user will be prompt to enter what table.
+Then the user will be prompt to choose if the want to add, delete, or update an attribute in that particular table.
+add(): user will be able to add a student to the students table and then be prompted to what attributes to add
+delete(): user will be able to add a professor to the professors table and then be prompted to what attributes to add
+view(): user will view what they enter. For example, if user wants to view a particular student number the user will enter the student number and view all details on a particular student.
+
