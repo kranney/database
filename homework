@@ -1,0 +1,12 @@
+I would use specialization for students because each student is unique and it would be good to keep as much useful information as possible. The school has also asked to keep a lot of information on each student.
+The school keeps a larger portion of information the leases for the rooms on campus. It would be key to keep a lot of data because of the wide range of options that are avialble for the students to choose from when having the option to lease on campus.
+Invoices would be able to utilize specialization because of the amount of information that is kept for each invoice. Information such as lease number, invoice number, semster, payment due, student's full name and banner number, place number, room number, and the address. There is a lot of information that is included with invoices so it would be wise to utilize specialization here.
+Specialization would be key for student apartment inspections. There could be a number of attributes to why a room would be inadiquite to live in. 
+
+I would use generalization on halls of residence. There is not a large amount of major differences from one residence hall to another.
+If it were a large university you would be able to generalize some courses. If there are multiple courses, for example multiple general chemistry courses that are tought by different professors, that satisfy a requirment for a student could be generalized. Student flats could be generalized. There is not major differences from one apartment to another.
+
+Next-of-kin is an aggregate to a particular student. Residence staff is an aggregate to student flats or halls of residence. Leases and invoices is an aggregate of students. Student is an aggregate of courses because students belong to a course.
+
+I do not think there is any composition in this database system. Students are always coming and going and are not there for a life time. Professors go to different colleges along with employees. 
+
