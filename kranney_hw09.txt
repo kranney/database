@@ -1,0 +1,31 @@
+13.9
+a
+
+I would use specialization for students because each student is unique and it would be good to keep as much useful information as possible. The school has also asked to keep a lot of information on each student.
+The school keeps a larger portion of information the leases for the rooms on campus. It would be key to keep a lot of data because of the wide range of options that are avialble for the students to choose from when having the option to lease on campus.
+Invoices would be able to utilize specialization because of the amount of information that is kept for each invoice. Information such as lease number, invoice number, semster, payment due, student's full name and banner number, place number, room number, and the address. There is a lot of information that is included with invoices so it would be wise to utilize specialization here.
+Specialization would be key for student apartment inspections. There could be a number of attributes to why a room would be inadiquite to live in. 
+
+dent flats, leases, invoices, and residence staff can be generalized with halls of residence as a superclass.
+
+Next-of-kin is an aggregate to a particular student. Residence staff is an aggregate to student flats or halls of residence. Leases and invoices is an aggregate of students. Student is an aggregate of courses because students belong to a course.
+
+I do not think there is any composition in this database system. Students are always coming and going and are not there for a life time. Professors go to different colleges along with employees. 
+
+b
+
+Specialiaztion would be good for the clients because of how the students can pick different dates for their lessons and be able to choose their instructions. Also the fact the each client fills out a detailed form screams specialization. Specialization would also be good for the cars because the cars are inspected for different faults and to be able to have details for the faults of any of the vehicles would be key.
+
+Generalization can be done with seniro instructors, manager, insturctors, and administrative staff with office as a superclass.
+
+Manager, semior instructors, instructors, and adminsistrative staff are all aggregate to office. Clients are aggregate to instructor. Cars are aggregate to instructor.
+
+I do not think there is any reason for composition in this database system. Clients are not lifetime to any of the instructors. Instructors could easily go to another office or go to another job.
+
+c
+
+Specialization would be good to use for the staff. There are different kinds of staff members and each staff member has different responsibilities. Patients will also have to be specialized because there are different details about each patient. 
+
+Generalization can be done with staff, patients, surgical and nonsurgical supplies, pharmaceutical supplies with ward as a superclass. Inpatient and outpatient are generalized with patient as a superclass. Supplies is a superclass to pharmaceutical supplies, ward requisitions surgical and nonsurgical supplies, and suppliers.
+
+Patient's next-of-kin is an aggregate to patients. Outpatient and inpatient is an aggregate to patient.
