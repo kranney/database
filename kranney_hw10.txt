@@ -1,0 +1,46 @@
+Problem 14.15
+a)
+If I delete dentist Tony Smith I some appointment date and time and surgeryNo for Gillian White and Jill Bell. If I update the time Ian Mackay her time will change for both appointments. If I insert an appointment for Gillian White, I would not know who the dentist or surgeryNo is.
+
+b)
+staffNo -> dentistName
+patNo -> patName
+
+c)
+staff (number, name)
+Primary Key (number)
+
+Patient (name, number)
+Primary Key (number)
+
+Appointment (date_and_time, surgeryNo, staffNo, patNo)
+Primary Key (patNo, staffNo)
+
+
+Problem 15.7
+
+Appointment (date_and_time, surgeryNo, staffNo, patNo)
+Primary Key (patNo, staffNo)
+
+This is not BCNF because we cannot assume that surgeryNo is dependent on staffNo.
+
+Surgery (number, staffNo)
+
+Problem 14.16
+a)
+If I delete contractNo i lose two hLoc. If I update the hours for contractNo I will update both the National Insurance Numberts for the contractNo. If I insert another NIN I would not know what contractNo is assigned to that.
+
+b)
+You could assume that hLoc is functionally dependent on hNo. You could assume that hLoc is dependent on contractNo. eName is functionally dependent on NIN.
+
+c)
+Each hotel has it's own contract number, it's own hotel number, and is in a hotel location. employees work at each hotel but can work at different hotels.
+
+Each employee has its own NIN and the hours are recorded that are worked at each hotel. 
+
+hotel (contractNO, hNo, eName, hLoc)
+Primary key (contractNo, hNo)
+
+employee (NIN, hours, hNo)
+Primary key (NIN)
+
