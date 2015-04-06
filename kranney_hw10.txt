@@ -34,13 +34,9 @@ b)
 You could assume that hLoc is functionally dependent on hNo. You could assume that hLoc is dependent on contractNo. eName is functionally dependent on NIN.
 
 c)
-Each hotel has it's own contract number, it's own hotel number, and is in a hotel location. employees work at each hotel but can work at different hotels.
+employee (NIN, eName)
+Primary Key (NIN)
 
-Each employee has its own NIN and the hours are recorded that are worked at each hotel. 
-
-hotel (contractNO, hNo, eName, hLoc)
-Primary key (contractNo, hNo)
-
-employee (NIN, hours, hNo)
-Primary key (NIN)
+hotels (hNo, hLoc, contractNo)
+Primary Key (hNo, contractNo)
 
