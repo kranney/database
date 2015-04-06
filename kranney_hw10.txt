@@ -34,9 +34,39 @@ b)
 You could assume that hLoc is functionally dependent on hNo. You could assume that hLoc is dependent on contractNo. eName is functionally dependent on NIN.
 
 c)
-employee (NIN, eName)
+employee (NIN, eName, time)
 Primary Key (NIN)
 
-hotels (hNo, hLoc, contractNo)
+hotels (hNo, hLoc, contractNo, time)
 Primary Key (hNo, contractNo)
+
+Problem 15.8
+
+employee (NIN, eName, time)
+Primary Key (NIN)
+
+hotels (hNo, hLoc, contractNo, time)
+Primary Key (hNo, contractNo)
+
+The tables are in BCNF.
+
+Problem 15.9
+
+a)
+If I was to delete pediatrics I would lose the entire table.
+
+b)
+Well If I was to delete pediatrics I would lose the entire table. If I update Kim Jones I would update all of the patients. If I insert another staffName would the patientName have to be Claire or Brian?
+
+c)
+staff (Name, patientName, wardName)
+patient (wardName, staffName)
+warName (staffName, patientName)
+
+Problem 15.10
+
+a) If I was to delete supplierNo S2 I would have a lot of null.
+
+supplier (supplierNo, hospitalName)
+hospital (hospitalName, supplierNo, itemDescription)
 
