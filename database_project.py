@@ -1,6 +1,6 @@
 import psycopg2
 
-connection = psycopg2.connection(host='hostname', database ='databasename', user='username', password='password')
+connection = psycopg2.connection(host='cs350', database ='kranney_project', user='kranney', password='password')
 
 cur = connection.cursor()
 
