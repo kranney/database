@@ -2,9 +2,60 @@ import psycopg2
 
 # need to import my sql file
 
-connection = psycopg2.connection(host='cs350', database ='kranney_project', user='kranney', password='password')
+connection = psycopg2.connection(host='localhost', database ='cs350', user='kranney', password='kranney')
 
-cur = connection.cursor()
+
+
+
+
+def view():
+	" The user will be able to choose what table he/she would like to view."
+
+	table = ''
+
+	while table != 'exit':
+		table = input("What table would you like to view? Choose from"
+			" 'courses', 'students', 'professors', or 'department'.")
+		if table == 'courses':
+			view_course()
+		elif table == 'students':
+			view_student()
+		elif table == 'professors':
+			view_professor()
+		elif table == 'department':
+			view_department()
+		else:
+			view()
+
+def view_department():
+	""" The user will be able to view details on a particular department."""
+
+	department = ""
+
+	while department != 'exit':
+		department = input ("What department would you like to view details on?"
+			"Enter 'exit' to exit.")
+		if course == int:
+			pass
+		elif course == str:
+			pass
+		else:
+			view_department()
+
+def view_course():
+	""" The user will be able to view details about a particular course."""
+	
+	course = ""
+
+	while course != 'exit':
+		course = input("What course would you like to view details on?"
+			"Enter 'exit' to exit.")
+		if course == int:
+			pass
+		elif course == str:
+			pass
+		else:
+			view_course()
 
 # view details about a student
 def view_student():
@@ -48,37 +99,89 @@ def view_professor():
 		professor = input('What professor would you like to view?')
 		# select the professor from the table
 
-def del_professor():
+
+def delete_course():
+	""" This function will allow the user to delete a course from the course table"""
+
+	course = ""
+
+	while course != 'exit':
+		course = input("What course would you like to delete?")
+		course = str(course)
+		# delete the course using sql statement
+		pass
+
+def delete_student():
+	"""This function will allow the user to delete a student form the students table"""
+
+	student = ""
+
+	while student != 'exit':
+		# delete the student from the database
+		student = input("What student would you like to delete?")
+		student = str(student)
+		pass
+
+def delete_professor():
 	""" This function will allow the user to delete a professor from
 	the professor table."""
 	# first ask who to delete.
 	# execute delete statement on the professor
-	delete = ""
+	professor = ""
 	
-	while delete != "exit":
+	while professor != "exit":
+		professor = input("What professor would you like to delete?")
+		professor = str(professor)
+		pass
 		# how will the user know what professor to enter?
 		# what happens when the user enters the wrong name?
 		# somehow search the table for the professor name?
 		# delete the professor the user has entered
-		pass
+
+
+def delete():
+	""" This will prompt the user to choose what table to delete information from."""
+
+	table = ''
+
+	while table != 'exit':
+		table = input('What would you like to delete' " a 'student', 'professor',"
+			" 'department' or a 'course'?")
+
+		if table == 'student':
+			delete_student()
+		elif table == 'professor':
+			delete_professor()
+		elif table == 'department':
+			delete_department()
+		elif table == 'course':
+			delete_course()
+		else:
+			delete()
 
 
 def update_department():
 	""" The user will choose what department they would like to update."""
 	
-	update_department = ""
+	department = ""
 	
-	while update_department != 'exit':
-		pass
+	while department != 'exit':
+		department = input("What department would you like to update?")
+		department = str(department)
+		# what attribute to update about the particular department.
 
 #update the professor part of the database
 def update_professor():
 	""" The user will be able to update a professor in the database."""
 
-	update_professor = ""
+	professor = ""
 	
-	while update_course != 'exit':
+	while course != 'exit':
+		professor = input("What professor would you like to update?")
+		professor = str(professor)
 		pass
+		# update the professor
+		# choose what to update about the particular professor
 
 # now update the courses part of the database
 def update_course():
@@ -90,6 +193,7 @@ def update_course():
 	# how do i search for courses?
 	while update_course != 'exit':
 		update_course = input('What course would you like to update?\n')
+		update_course = str(update_course)
 		pass
 		# provide options of what course to update or search for a course name
 		# how do i do that?
@@ -105,7 +209,9 @@ def update_table():
 	update = ""
 	
 	while update != 'courses' or 'professors' or 'department' or 'students':
+		
 		update = input('Would you like to update courses, professors, department, or students?\n')
+		update = str(update)
 
 		if update == 'courses':
 			update_course()
@@ -129,6 +235,7 @@ def first_action():
 	while first_action != 'exit':
 
 		first_action = input('Would you like to add, update, view, or delete?')
+		first_action = str(first_action)
 		
 		if first_action == 'add':
 			# add what?
@@ -137,10 +244,10 @@ def first_action():
 			# update what
 			update_table()
 		elif first_action == 'delete':
-			# delete what
+			delte()
 			pass
 		elif first_action == 'view':
 			# view what
-			pass
+			view_table()
 		else:
 			first_action()
