@@ -14,7 +14,8 @@ CREATE TABLE professors
 (
 	degree varchar(50) NOT NULL,
 	pay money NOT NULL,
-	full_name varchar(250) NOT NULL,
+	last_name varchar(250) NOT NULL,
+	first_name varchar(250) NOT NULL,
 	number int NOT NULL,
 	department varchar(250) NOT NULL,
 	PRIMARY KEY (full_name, number)
@@ -34,9 +35,12 @@ CREATE TABLE department
 
 CREATE TABLE students
 (
+	first_name varchar(250) NOT NULL,
+	middle_name varchar(250) NOT NULL,
+	last_name varchar(250) NOT NULL,
 	major01 varchar(50) NOT NULL, --foreign key
 	major02 varchar(50),
-	gpa int NOT NULL,
+	gpa number NOT NULL,
 	number int NOT NULL,
 	minor01 varchar(50), --foreign key could be null
 	minor02 varchar(50), --foregin key could be null
@@ -46,5 +50,5 @@ CREATE TABLE students
 	FOREIGN KEY (major01, major02, minor01, minor02)
 		REFERENCES courses (major01, major02, minor01),
 	FOREIGN KEY (advisor)
-		REFERENCES professors (full_name)
+		REFERENCES professors (last_name, first_name)
 );
