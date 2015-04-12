@@ -8,7 +8,7 @@ CREATE TABLE courses
 	PRIMARY KEY (number, name),
 	FOREIGN KEY (professor_id)
 		REFERENCES professors (id)
-	CHECK (number < 0 AND number_of_students > 0)
+	CHECK (number > 0 AND number_of_students > 0)
 	
 );
 
@@ -23,6 +23,7 @@ CREATE TABLE professors
 	PRIMARY KEY (full_name, number),
 	FOREIGN KEY (department_id)
 		REFERENCES departments (id)
+	CHECK (id > 0 AND department_id > 0)
 );
 
 CREATE TABLE departments
@@ -38,6 +39,7 @@ CREATE TABLE departments
 		REFERENCES professors (id)
 	FOREIGN KEY (director_id)
 		REFERENCES professors (id)
+	CHECK (id > 0 AND professor_id > 0)
 );
 
 CREATE TABLE students
@@ -56,6 +58,7 @@ CREATE TABLE students
 	PRIMARY KEY (number),
 	FOREIGN KEY (advisor_number)
 		REFERENCES professors (number)
+	CHECK (id > 0 AND graduation_year > 1860 AND advisor_number > 0)
 );
 
 CREATE TABLE professors_courses
@@ -66,6 +69,7 @@ CREATE TABLE professors_courses
 		REFERENCES professors (id)
 	FOREIGN KEY (course_id)
 		REFERENCES courses (id)
+	CHECK (professor_id > 0 AND course_id > 0)
 );
 
 CREATE TABLE majors
@@ -76,6 +80,7 @@ CREATE TABLE majors
 	PRIMARY KEY (name, id, department_id),
 	FOREIGN KEY (department_id)
 		REFERENCES departments (id)
+	CHECK (id > 0)
 );
 
 CREATE TABLE minors
@@ -86,4 +91,5 @@ CREATE TABLE minors
 	PRIMARY KEY (name, id),
 	FOREIGN KEY (department_id)
 		REFERENCES departments (id)
+	CHECK (id > 0)
 );
