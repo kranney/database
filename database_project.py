@@ -4,7 +4,26 @@ import psycopg2
 
 connection = psycopg2.connection(host='localhost', database ='cs350', user='kranney', password='kranney')
 
+def add():
+	""" This will allow the user to choose what database to add to."""
 
+	table = ""
+
+	while table != 'exit':
+		table = input("Would you like to add to the 'courses', 'professors' 'students'"
+			" or 'departments' table?\n")
+		table = str(table)
+
+		if table == 'courses':
+			add_course()
+		elif table == 'professors':
+			add_professor()
+		elif table == 'students':
+			add_student()
+		elif table == 'departments':
+			add_department()
+		else:
+			add()
 
 
 
