@@ -64,3 +64,27 @@ WHERE id = -- the id the user entered
 SELECT *
 FROM courses
 WHERE id = -- the id the user entered
+
+SELECT *
+FROM majors
+WHERE name = -- the name the user entered
+
+SELECT *
+FROM minors
+WHERE name = -- the name the user entered
+
+DELETE *
+FROM majors
+WHERE name = -- the name the user entered
+
+DELETE *
+FROM minors
+WHERE name = -- the name the user entered
+
+UPDATE majors
+SET column = new_attribute -- column and new_attribute are both set by the user
+WHERE name = -- name the user entered
+
+UPDATE minors
+SET column = new_attribute -- column and new_attribute are both set by the user
+WHERE name = -- the name the user entered

@@ -12,13 +12,14 @@ def add_course():
 def add_department():
 	""" This will allow the user to add a department to the departments table."""
 
-	department = input("Enter the name of the department you would like to add.")
+	print("You must enter the department as is:\nid, director_id, majors, 'name', professors")
 	# use sql statement
 
 def add_professor():
 	""" This wll allow the user to add a professor to the professors table."""
 
-	professor = input("Enter the name of the professor you would like to add.")
+	print("You must enter the professor as is:\n'degree', pay, 'last name', 'first name', "
+		"id, department_id\nFor example:\n'Biology', 25,000, 'Wilterding', 'John', 3134, 3213")
 	# use sql insert statement
 
 def add_student():
@@ -28,8 +29,21 @@ def add_student():
 		"'First name', 'middle name', 'Last name', 'major', 'major', 'gpa', id_number, 'minor'"
 		" 'minor' graduation year, advisor number\nFor example: 'Kyle', 'Jacob', 'Ranney', 'Insurance'"
 		", 'Chemistry', 3.0, 93988, 'Biology', 'NULL', 2016, 2234\n")
+	student = [{first_name}
 	# use sql insert statement
-	# become familiar with this!	
+	# become familiar with this!
+
+def add_minor():
+	""" This function will allow the user to add a minor to the minors table."""
+
+	minor = ""	
+
+def add_major():
+	""" This will allow the user to add a major to the majors table."""
+
+	major = ""
+
+
 
 def add():
 	""" This will allow the user to choose what database to add to."""
@@ -37,8 +51,8 @@ def add():
 	table = ""
 
 	while table != 'exit':
-		table = input("Would you like to add to the 'courses', 'professors' 'students'"
-			" or 'departments' table?\n")
+		table = input("Would you like to add to the 'courses', 'professors', 'students,'"
+			" major, minor, or 'departments' table?\n")
 		table = str(table)
 
 		if table == 'courses':
@@ -49,9 +63,18 @@ def add():
 			add_student()
 		elif table == 'departments':
 			add_department()
+		elif table == 'minor':
+			add_minor()
+		elif table == 'major':
+			add_major()
 		else:
 			add()
 
+def view_major():
+	""" This will allow the user to view all of the details for a minor."""
+
+		major_name = input("What major would you like to view?\n")
+		cur.execute("""SELECT * FROM majors WHERE name = %s""" [major_name])
 
 def view_department():
 	""" The user will be able to view details on a particular department."""
@@ -61,12 +84,6 @@ def view_department():
 	while department != 'exit':
 		department = input ("What department would you like to view details on?"
 			"Enter 'exit' to exit.")
-		if course == int:
-			pass
-		elif course == str:
-			pass
-		else:
-			view_department()
 
 def view_course():
 	""" The user will be able to view details about a particular course."""
@@ -133,7 +150,7 @@ def view():
 
 	while table != 'exit':
 		table = input("What table would you like to view? Choose from"
-			" 'courses', 'students', 'professors', or 'department'.")
+			" 'courses', 'students', 'professors', 'major', 'minor', or 'department'.")
 		if table == 'courses':
 			view_course()
 		elif table == 'students':
@@ -166,6 +183,20 @@ def delete_course():
 		# delete the course using sql statement
 		pass
 
+def delete_minor():
+	""" This function will allow the user to delete an entire minor and all of its attributes."""
+
+	minor_name = input('What major would you like to delete?')
+
+	cur.execute("""DELETE * FROM minors WHERE minor_name = %s""",[minor_name])
+
+def delete_major():
+	""" This function will allow the user to delete an entire major and all of its attributes."""
+
+	major_name = input('What major would you like to delete?')
+
+	cur.execute("""DELETE * FROM majors WHERE major_name = %s""",[major_name])
+
 def delete_student():
 	"""This function will allow the user to delete a student form the students table"""
 
@@ -173,9 +204,13 @@ def delete_student():
 
 	while student != 'exit':
 		# delete the student from the database
-		student = input("What student would you like to delete?")
-		student = str(student)
-		pass
+		student = input("Enter the id of the student that you would like to delete")
+		student = int(student)
+		cur.execute(""" DELETE *
+			FROM students
+			WHERE id = student""", [name])
+		data = cur.fetchall()
+		
 
 def delete_professor():
 	""" This function will allow the user to delete a professor from
@@ -199,8 +234,8 @@ def delete():
 	table = ''
 
 	while table != 'exit':
-		table = input('What would you like to delete' " a 'student', 'professor',"
-			" 'department' or a 'course'?")
+		table = input('What would you like to delete?' " A 'student', 'professor',"
+			" 'department' 'major', 'minor' or a 'course'?")
 
 		if table == 'student':
 			delete_student()
@@ -212,6 +247,36 @@ def delete():
 			delete_course()
 		else:
 			delete()
+
+def update_minor():
+	""" The user will be able to choose what minor he/she would like to update."""
+
+	# first i choose what table to update # i choose number
+	# i want to change the name # 
+	# change name to llama
+	# 
+
+	minor = input("What minor would you like to update?\n")
+	column = input("What column would you like to update? name, id, or department_id")
+	new_attribute = input("What would you like to change it to?")
+
+	cur.execute("""UPDATE majors SET column = %s WHERE name = %s""", [new_attribute, name])
+
+
+def update_major():
+	""" The user will be able to choose what major he/she would like to update."""
+
+	# first i choose what table to update # i choose number
+	# i want to change the name # 
+	# change name to llama
+	# 
+
+	major = input("What major would you like to update?\n")
+	column = input("What column would you like to update? name, id, or department_id")
+	new_attribute = input("What would you like to change it to?")
+
+	cur.execute("""UPDATE majors SET column = %s WHERE name = %s""", [new_attribute, name])
+
 
 def update_student():
 	""" The user will be able to choose what student he/she would like to update."""
