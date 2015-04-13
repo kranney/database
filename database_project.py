@@ -70,8 +70,14 @@ def add():
 		else:
 			add()
 
+def view_minor():
+	""" This will allow the user to view all of the details for a major."""
+
+		major_name = input("What major would you like to view?\n")
+		cur.execute("""SELECT * FROM majors WHERE name = %s""" [major_name])
+
 def view_major():
-	""" This will allow the user to view all of the details for a minor."""
+	""" This will allow the user to view all of the details for a major."""
 
 		major_name = input("What major would you like to view?\n")
 		cur.execute("""SELECT * FROM majors WHERE name = %s""" [major_name])

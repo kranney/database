@@ -30,10 +30,7 @@ CREATE TABLE departments
 (
 	id int NOT NULL,
 	director_id int, -- will have a name from professors
-	majors varchar(50) NOT NULL,
 	name varchar(50) NOT NULL,
-	minors varchar(50) NOT NULL,
-	professor_id int NOT NULL,
 	PRIMARY KEY (majors, name, minors),
 	FOREIGN KEY (professor_id)
 		REFERENCES professors (id)
@@ -49,15 +46,25 @@ CREATE TABLE students
 	last_name varchar(250) NOT NULL,
 	major01 varchar(50) NOT NULL, --foreign key
 	major02 varchar(50),
-	gpa number NOT NULL,
-	id int NOT NULL,
 	minor01 varchar(50), --foreign key could be null
 	minor02 varchar(50), --foregin key could be null
+	gpa number NOT NULL,
+	id int NOT NULL,
 	graduation_year int NOT NULL,
 	advisor_number int NOT NULL,
+	course_id01 int NOT NULL,
+	course_id02 int,
+	course_id03 int,
+	course_id04 int,
+	course_id05 int,
+	course_id06 int,
+	course_id07 int,
+	course_id08 int,
 	PRIMARY KEY (number),
 	FOREIGN KEY (advisor_number)
-		REFERENCES professors (number)
+		REFERENCES professors (id)
+	FOREIGN KEY (course_id01, course_id02, course_id03, course_id04, course_id05, course_id06, course_id07,course_id08)
+		REFERENCES courses (id)
 	CHECK (id > 0 AND graduation_year > 1860 AND advisor_number > 0)
 );
 

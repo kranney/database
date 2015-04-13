@@ -88,3 +88,9 @@ WHERE name = -- name the user entered
 UPDATE minors
 SET column = new_attribute -- column and new_attribute are both set by the user
 WHERE name = -- the name the user entered
+
+SELECT department.name, major.name
+FROM department, majors
+WHERE major.department_id = department.id
+
+-- count how many students are in a course
