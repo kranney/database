@@ -1,6 +1,6 @@
-import psycopg2
-connection = psycopg2.connection(host='localhost', database ='cs350', user='kranney', password='kranney')
-cur = con.cursor()
+#import psycopg2
+#info = "host=localhost database=350 username=kranney password=kranney"
+#connection = psycopg2.connect(info)
 
 def print_null_statement():
 	""" Will tell the user to print null if the user has no value to enter for a attribute."""
@@ -175,6 +175,10 @@ def view():
 			view_professor()
 		elif table == 'department':
 			view_department()
+		elif table == 'minor':
+			view_minor()
+		elif table == 'major':
+			view_major()
 
 def delete_department():
 	""" This function will allow the user to delete a department from the departments table."""
@@ -345,10 +349,7 @@ def update_table():
 			update_department
 		elif update == 'students':
 			# go update students table
-			up
-		else:
-			update_table()
-
+			update_student()
 
 
 def first_action():
@@ -372,7 +373,7 @@ def first_action():
 			pass
 		elif first_action == 'view':
 			# view what
-			view_table()
+			view()
 		else:
 			first_action()
 
