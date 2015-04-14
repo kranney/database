@@ -157,7 +157,7 @@ def view_professor():
 	professor."""
 
 	professor_id = input("Enter the id of the professor you would like to view.\n")
-	cur.execute("""SELECT * FROM professors WHERE id = %s""" [professor_id])
+	cur.execute("""SELECT * FROM professors WHERE id = %s""", [professor_id])
 
 def view():
 	" The user will be able to choose what table he/she would like to view."
@@ -179,68 +179,46 @@ def view():
 def delete_department():
 	""" This function will allow the user to delete a department from the departments table."""
 
-	department = ""
+	delete_department = input("What department would you like to entirely delete?\n")
 
-	while department != 'exit':
-		department = input("What department would you like to delete?\n")
-		department = str(department)
-		# delete the course using sql statement
+	cur.execute(""" DELETE * FROM departments WHERE name = %s""", [delete_department])
 
 def delete_course():
 	""" This function will allow the user to delete a course from the course table"""
 
-	course = ""
+	delete_course = input("Enter the course id of the course that you would like to delete?\n")
 
-	while course != 'exit':
-		course = input("What course would you like to delete?")
-		course = str(course)
-		# delete the course using sql statement
-		pass
+	cur.execute("""DELETE * FROM courses WHERE id = %s""", [delete_course])
 
 def delete_minor():
 	""" This function will allow the user to delete an entire minor and all of its attributes."""
 
 	minor_name = input('What major would you like to delete?')
 
-	cur.execute("""DELETE * FROM minors WHERE minor_name = %s""",[minor_name])
+	cur.execute("""DELETE * FROM minors WHERE name = %s""",[minor_name])
 
 def delete_major():
 	""" This function will allow the user to delete an entire major and all of its attributes."""
 
 	major_name = input('What major would you like to delete?')
 
-	cur.execute("""DELETE * FROM majors WHERE major_name = %s""",[major_name])
+	cur.execute("""DELETE * FROM majors WHERE name = %s""",[major_name])
 
 def delete_student():
 	"""This function will allow the user to delete a student form the students table"""
 
-	student = ""
+	delete_student = input("Enter the student id of the student that you would like to delete.\n")
 
-	while student != 'exit':
-		# delete the student from the database
-		student = input("Enter the id of the student that you would like to delete")
-		student = int(student)
-		cur.execute(""" DELETE *
-			FROM students
-			WHERE id = student""", [name])
-		data = cur.fetchall()
+	cur.execute("""DELETE * FROM students WHERE id = %s""", [delete_student])
 		
 
 def delete_professor():
 	""" This function will allow the user to delete a professor from
 	the professor table."""
-	# first ask who to delete.
-	# execute delete statement on the professor
-	professor = ""
 	
-	while professor != "exit":
-		professor = input("What professor would you like to delete?")
-		professor = str(professor)
-		# how will the user know what professor to enter?
-		# what happens when the user enters the wrong name?
-		# somehow search the table for the professor name?
-		# delete the professor the user has entered
+	delete_professor = input("Enter the id number of the professor that you would like to delete.\n")
 
+	cur.execute("""DELETE * FROM professors WHERE id = %s""", [delete_professor])
 
 def delete():
 	""" This will prompt the user to choose what table to delete information from."""
@@ -289,18 +267,20 @@ def update_major():
 	column = input("What column would you like to update? name, id, or department_id")
 	new_attribute = input("What would you like to change it to?")
 
-	cur.execute("""UPDATE majors SET column = %s WHERE name = %s""", [new_attribute, name])
+	cur.execute("""UPDATE majors SET column = %s WHERE name = %s""", [new_attribute, major])
 
 
 def update_student():
 	""" The user will be able to choose what student he/she would like to update."""
 
-	student = ''
+	student = input("Enter the id of the student that you would like to update.\n")
+	column = input("What column would you like to update? first name?, middle name, "
+		"last name, major01, major02, minor01, minor02, gpa, id number, graduation_year"
+		" advisor number, couse01, course02, course03, course04, course05, course06 "
+		"course07, course08")
+	new_attribute = input("What would you like to change it to?\n")
 
-	while student != "exit":
-		student = input("What student would you like to update?")
-		student = str(student)
-		# then what attribute to update?
+	cur.execute("""UPDATE students SET column = %s WHERE name = %s""", [new_attribute])
 
 def update_department():
 	""" The user will choose what department they would like to update."""

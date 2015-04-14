@@ -2,40 +2,36 @@ INSERT INTO students
 VALUES ('Kyle', 'Jacob', 'Ranney', 'insurance', NULL, 3.22, 93988, NULL, NULL, 2016, 'Breed')
 
 INSERT INTO students
-VALUES -- all user entered
---(first_name, middle_name, last_name, major01, major02, gpa, id, minor01, minor02, graduation year, advisor)
+VALUES (first_name, middle_name, last_name, major01, major02, gpa, id, minor01, minor02, graduation year, advisor)
 
 INSERT INTO professors
-VALUES -- all user entered
--- (degree, pay, last_name, first_name, id, department_id)
+VALUES (degree, pay, last_name, first_name, id, department_id)
 
 INSERT INTO departments
-VALUES -- all user entered
--- (id, director_id, majors, name, minors, professor_id)
+VALUES (id, director_id, majors, name, minors, professor_id)
 
 INSERT INTO courses
-VALUES -- all user entered
--- time, id, name, number_of students, professor_id
+VALUES (time, id, name, number_of students, professor_id)
 
 DELETE *
 FROM students
-WHERE id = --the variable the user puts (student)
+WHERE id = student
 
 DELETE *
 FROM professors
-WHERE id = -- professor
+WHERE id = delete_professor
 
 DELETE *
 FROM courses
-WHERE id = -- course
+WHERE id = delete_course
 
 DELETE *
 FROM departments
-WHERE id = -- department
+WHERE id = delete_department
 
 UPDATE students
 SET column = new_attribute
-WHERE id = -- student
+WHERE id = student
 
 UPDATE professors
 SET column = new_attribute
@@ -51,43 +47,43 @@ WHERE id = department
 
 SELECT * 
 FROM students
-WHERE id = -- the id the user entered
+WHERE id = student_id
 
 SELECT *
 FROM professors
-WHERE id = -- the id the user entered
+WHERE id = professor_id
 
 SELECT *
 FROM departments
-WHERE id = -- the id the user entered
+WHERE id = department_id
 
 SELECT *
 FROM courses
-WHERE id = -- the id the user entered
+WHERE id = course_id
 
 SELECT *
 FROM majors
-WHERE name = -- the name the user entered
+WHERE name = major_name
 
 SELECT *
 FROM minors
-WHERE name = -- the name the user entered
+WHERE name = minor_name
 
 DELETE *
 FROM majors
-WHERE name = -- the name the user entered
+WHERE name = -major_name
 
 DELETE *
 FROM minors
-WHERE name = -- the name the user entered
+WHERE name = minor_name
 
 UPDATE majors
 SET column = new_attribute -- column and new_attribute are both set by the user
-WHERE name = -- name the user entered
+WHERE name = major_name
 
 UPDATE minors
 SET column = new_attribute -- column and new_attribute are both set by the user
-WHERE name = -- the name the user entered
+WHERE name = minor_name
 
 SELECT department.name, major.name
 FROM department, majors
