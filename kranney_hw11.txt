@@ -1,19 +1,111 @@
+7.10
+
 students (banner_number, first_name, last_name, street, city, postcode, mobile_phone, email, date of birth, gender, class_standing, nationality, special needs, status, major01, major02, minor01, minor02, advisor, room)
 PRIMARY KEY: (banner_number, mobile_phone, email)
 
 adivors (first_name, last_name, position, department_name, internal_phone, email, office_number)
-PRIMARY KEY: (internal_phone, email, office_number)
+PRIMARY KEY: (email)
+ALTERNATE KEYS: (office_number, internal_phone)
+
+email (number, last_name, first_name)
+PRIMARY KEY: (number)
+FOREIGN KEY: (last_name, first_name)
+	REFERENCES: students (last_name, first_name)
 
 hall_of_residence (name, address, telephone_number, hall_manager)
 PRIMARY KEYS: (name, address, telephone_number, hall_manager)
 
 room (number, place_number, rent)
-PRIMARY KEYS: (number, place_number)
+PRIMARY KEYS: (number)
+ALTERNATE KEYS: (place_number)
 
 apartments (holds_number_of_students, number, address, singles_available, flat_number)
-PRIMARY KEY: (flat_number)
+PRIMARY KEY: (flat_number, number)
 
-leases (leasing_number, price, duration, student_name, banner_number, place_number, room_number, address_details, enter_date, leave_date)
+leases (leasing_number, price, duration, student_first_name, student_last_name, banner_number, place_number, room_number, address_details, enter_date, leave_date)
 PRIMARY KEY: (leasing_number)
+FOREIGN KEY: (student_first_name, student_last_name)
+	REFERENCES students (first_name, last_name)
 
-invoice ()
+invoice (number, lease_number, semester, payment_due, student_last_name, student_first_name, banner_number, place_number, room_number, hall_address)
+PRIMARY KEY: (number)
+FOREIGN KEY: (lease_number)
+	REFERENCES leases (leasing_number)
+FOREIGN KEY: (student_last_name, student_first_name, banner_number)
+	REFERENCES students (last_name, first_name, banner_number)
+FOREIGN KEY: (place_number, room_number)
+	REFERENCES room (place_number, number)
+
+inspection (number, inspector, date, staisfactory_condition, comments)
+PRIMARY KEY: (number)
+FOREIGN KEY: inspector
+	REFERENCES: hall_of_residence (hall_manager)
+
+residence_staff (number, first_name, last_name, email, street, city, postcode, dob, gender, position, location)
+PRIMARY KEY: (number)
+ALTERNATE KEY: (email)
+
+courses (number, title, year, instructor, instructor_phone_number, email, room_number, department_name)
+PRIMARY KEY: (number)
+ALTERNATE KEY: (email)
+
+next_of_kin (kin_name, student_name, relationship, street, city, postcode, telephone)
+PRIMARY KEY: (name)
+FOREIGN KEY: student_name (students)
+
+professors (first_name, last_name, number, email, courses)
+PRIMARY KEY: (number)
+ALTERNATE KEY: (email)
+
+professor_courses (course_number, profressor_number)
+PRIMARY KEY: (course_number)
+ALTERNATE KEY: (professor_number)
+
+7.11
+
+office (manager, senior_instructors, instructors, administrative staff, id)
+PRIMARY KEY: (number)
+
+manager (first_name, last_name, email)
+PRIMARY KEY: (email)
+
+instructor (first_name, last_name, email, car)
+PRIMARY KEY: (email)
+
+administrative_staff (first_name, last_name, email)
+PRIMARY KEY: (email)
+
+clients (instructor, first_name, last_name, ss, progress, miles, pass_written_test, pass_driving_test, id, address)
+PRIMARY KEY (id)
+
+lessons (id, time)
+
+car (instructor, last_inspection_date)
+
+7.14
+staff (id, name, phone_extension)
+PRIMARY KEY: (id)
+
+space (id)
+PRIMARY KEY: (id)
+
+parking_lot (name, location, capacity, number_of_floors)
+PRIMARY KEY: (name)
+
+test (date, visitor_license_id)
+PRIMARY KEY: (visitor_license_id)
+
+17.15
+book (ISBN, title, edition, year_published, selling price, selling_date, loan_period)
+PRIMARY KEY: ISBN
+
+borrower (id, name, address)
+PRIMARY KEY: (id)
+
+book_loan (id, date_out, date_in, borrower)
+PRIMARY KEY: (id)
+FOREIGN KEY: (borrower)
+	REFERENCES: borrower (name)
+
+book_copy (id, status)
+PRIMARY KEY: (id)

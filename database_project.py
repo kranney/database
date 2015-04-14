@@ -2,48 +2,99 @@ import psycopg2
 connection = psycopg2.connection(host='localhost', database ='cs350', user='kranney', password='kranney')
 cur = con.cursor()
 
+def print_null_statement():
+	""" Will tell the user to print null if the user has no value to enter for a attribute."""
+
+	print("If you do not have a value to enter please enter 'null'.\n")
+
 def add_course():
 	""" This will allow the user to add a course to the courses table."""
 
-	course = input("Enter the name of the course that you would like to add.")
-	# use sql insert statement
+	print_null_statement()
+	time = input("What is the time the course will run?\n")
+	id_number = input("What is the id number of the course?\n")
+	name = input("What is the name of the course?\n")
+	professor_id = input("What is the id number of the professor teaching the course?\n")
 
+	cur.execute(""" INSERT INTO courses VALUES time = %s, id = %s, name = %s, professor_id = %s""" 
+		[time, id_number, name, professor_id])
 
 def add_department():
 	""" This will allow the user to add a department to the departments table."""
 
-	print("You must enter the department as is:\nid, director_id, majors, 'name', professors")
-	# use sql statement
+	print_null_statement()
+	department_id = input("What is the department id number?\n")
+	director_id = input("What is the id of the director of the department?\n")
+	name = input("What is the name of the department?\n")
+
+	cur.execute(""" INSERT INTO departments VALUES id = %s, director_id = %s, name = %s""" 
+		[department_id, director_id, name])
 
 def add_professor():
 	""" This wll allow the user to add a professor to the professors table."""
 
-	print("You must enter the professor as is:\n'degree', pay, 'last name', 'first name', "
-		"id, department_id\nFor example:\n'Biology', 25,000, 'Wilterding', 'John', 3134, 3213")
-	# use sql insert statement
+	print_null_statement()
+	degree = input("What is the degree the professor has?\n")
+	pay = input("What is the pay the professor is earning?\n")
+	last_name = input("What is the last name of the professor?\n")
+	first_name = input("What is the first name of the professor?\n")
+	professor_id = input("What is the id number of the professor?\n")
+	department_id = input("What is the department number the professor belongs to?\n")
+
+	cur.execute(""" INSERT INTO professors VALUES degree = %s, pay = %s, last_name = %s, first_name = %s, 
+		id = %s, department_id = %s""" [degree, pay, last_name, first_name, professor_id, department_id])
 
 def add_student():
 	""" This will allow the user to add a student to the students table."""
 
-	print('You must enter the student as is:\n'
-		"'First name', 'middle name', 'Last name', 'major', 'major', 'gpa', id_number, 'minor'"
-		" 'minor' graduation year, advisor number\nFor example: 'Kyle', 'Jacob', 'Ranney', 'Insurance'"
-		", 'Chemistry', 3.0, 93988, 'Biology', 'NULL', 2016, 2234\n")
-	student = [{first_name}
-	# use sql insert statement
-	# become familiar with this!
+	print_null_statement()
+	first_name = input("What is the students first name?\n")
+	middle_name = input("What is the students middle name?\n")
+	last_name = input("What is the students last name?\n")
+	major01 = input("What is the students first major?\n")
+	major02 = input("What is the students second major?\n")
+	minor01 = input("What is the students first minor?\n")
+	minor02 = input("What is the students second minor?\n")
+	gpa = input("What is the students current gpa?\n")
+	id_number = input("What is the students id number?\n")
+	graduation_year = input("What is the scheduled graduation year of the student?\n")
+	advisor_number = input("What is the id number of the advisor of the student?\n")
+	course01 = input("What is the first course id the student is taking?\n")
+	course02 = input("What is the second course id the student is taking?\n")
+	course03 = input("What is the third course id the student is taking?\n")
+	course04 = input("What is the fourth course id the student is taking\n")
+	course05 = input("What is the fifth course id the student is taking?\n")
+	course06 = input("What is the sixth course id the student is taking?\n")
+	course07 = input("What is the seventh course id the student is taking?\n")
+	course08 = input("What is the eighth course id the student is taking?\n")
+
+	cur.execute(""" INSERT INTO students VALUES first_name = %s, middle_name = %s, last_name = %s, 
+		major01 = %s, major02 = %s, major03 = %s, major04 = %s, major05 = %s, major06 = %s, 
+		major07 = %s, major08 = %s""" [first_name, middle_name, last_name, major01, major02,
+		 major03, major04, major05, major06, major07, major08])
+
 
 def add_minor():
 	""" This function will allow the user to add a minor to the minors table."""
 
-	minor = ""	
+	print_null_statement()
+	minor_name = input("What is the name of the minor?\n")
+	minor_id = input("What is id number of the minor?\n")
+	department_id = input("What is the department number this minor belongs to?\n")
+
+	cur.execute(""" INSERT INTO minors VALUES name = %s, id = %s, department_id = %s""" [minor_name,
+	 minor_id, department_id])
 
 def add_major():
 	""" This will allow the user to add a major to the majors table."""
 
-	major = ""
+	print_null_statement()
+	major_name = input("What is the name of the major?\n")
+	major_id = input("What is the id number of the major?\n")
+	department_id = input("What is department number this major belongs to?\n")
 
-
+	cur.execute(""" INSERT INTO majors VALUES name = %s, id = %s, department_id = %s"""
+		 [major_name, major_id, department_id])
 
 def add():
 	""" This will allow the user to choose what database to add to."""
@@ -67,69 +118,37 @@ def add():
 			add_minor()
 		elif table == 'major':
 			add_major()
-		else:
-			add()
 
 def view_minor():
-	""" This will allow the user to view all of the details for a major."""
+	""" This will allow the user to view all of the details for a minor."""
 
-		major_name = input("What major would you like to view?\n")
-		cur.execute("""SELECT * FROM majors WHERE name = %s""" [major_name])
+	minor_name = input("Enter the name of the minor you would like to view.\n")
+	cur.execute("""SELECT * FROM majors WHERE name = %s""" [minor_name])
 
 def view_major():
 	""" This will allow the user to view all of the details for a major."""
 
-		major_name = input("What major would you like to view?\n")
-		cur.execute("""SELECT * FROM majors WHERE name = %s""" [major_name])
+	major_name = input("Enter the name of the major you would like to view.\n")
+	cur.execute("""SELECT * FROM majors WHERE name = %s""" [major_name])
 
 def view_department():
 	""" The user will be able to view details on a particular department."""
 
-	department = ""
-
-	while department != 'exit':
-		department = input ("What department would you like to view details on?"
-			"Enter 'exit' to exit.")
-
+	department_name = input("Enter the name of the department you would like to view.\n")
+	cur.execute("""SELECT * FROM departments WHERE name = %s""" [department_name])
+	
 def view_course():
 	""" The user will be able to view details about a particular course."""
-	
-	course = ""
 
-	while course != 'exit':
-		course = input("What course would you like to view details on?"
-			"Enter 'exit' to exit.")
-		if course == int:
-			pass
-		elif course == str:
-			pass
-		else:
-			view_course()
+	course_name = input("Enter the name of the course you would like to view.\n")
+	cur.execute("""SELECT * FROM courses WHERE name = %s""" [course_name])
 
 # view details about a student
 def view_student():
 	""" This function will allow users to view details on a particular student."""
 
-	# prompt user what student to view
-	student = ""
-
-	while student != 'exit':
-		student = input('What student would you like to view details on?'
-			"Enter 'exit' to exit")
-		#user will then enter a students name
-		# what if they get the wrong name
-		# use the student variable in the select statment
-		# is the user entering an integer or a string?
-		# make it up to me or have them choose.
-		if student == int:
-			# search using the student's id_number
-			pass
-		elif student == str:
-			# search using the students last name
-			pass
-		else:
-			# start back over
-			view_student()
+	student_id = input("Enter the id of the student you would like to view.\n")
+	cur.execute("""SELECT * FROM students WHERE id = %s""" [student_id])
 
 
 # view details about a professor
@@ -137,17 +156,8 @@ def view_professor():
 	""" This function will allow the user to view the details about a particular
 	professor."""
 
-	# first search for the professor?
-	# enter the professors name
-	# present all the details on the present?
-
-	professor = ""
-
-	while view != "exit":
-		# enter the professors name that you would like to view the details on
-		professor = input('What professor would you like to view?')
-		# select the professor from the table
-
+	professor_id = input("Enter the id of the professor you would like to view.\n")
+	cur.execute("""SELECT * FROM professors WHERE id = %s""" [professor_id])
 
 def view():
 	" The user will be able to choose what table he/she would like to view."
@@ -165,8 +175,6 @@ def view():
 			view_professor()
 		elif table == 'department':
 			view_department()
-		else:
-			view()
 
 def delete_department():
 	""" This function will allow the user to delete a department from the departments table."""
