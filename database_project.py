@@ -1,6 +1,7 @@
-#import psycopg2
-#info = "host=localhost database=350 username=kranney password=kranney"
-#connection = psycopg2.connect(info)
+import psycopg2
+
+connection = psycopg2.connection(host='localhost', database='cs350', user='kranney', password='kranney')
+cur = connection.cursor()
 
 def print_null_statement():
 	""" Will tell the user to print null if the user has no value to enter for a attribute."""
