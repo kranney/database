@@ -1,7 +1,7 @@
 import psycopg2
+con = psycopg2.connect(host='localhost', database='cs350', user='postgres', password='')
 
-connection = psycopg2.connection(host='localhost', database='cs350', user='kranney', password='kranney')
-cur = connection.cursor()
+cur = con.cursor()
 
 def print_null_statement():
 	""" Will tell the user to print null if the user has no value to enter for a attribute."""
@@ -60,7 +60,7 @@ def add_student():
 	id_number = input("What is the students id number?\n")
 	graduation_year = input("What is the scheduled graduation year of the student?\n")
 	advisor_number = input("What is the id number of the advisor of the student?\n")
-	course01 = input("What is the first course id the student is taking?\n")
+	course01 = int(input("What is the first course id the student is taking?\n"))
 	course02 = input("What is the second course id the student is taking?\n")
 	course03 = input("What is the third course id the student is taking?\n")
 	course04 = input("What is the fourth course id the student is taking\n")
@@ -68,11 +68,12 @@ def add_student():
 	course06 = input("What is the sixth course id the student is taking?\n")
 	course07 = input("What is the seventh course id the student is taking?\n")
 	course08 = input("What is the eighth course id the student is taking?\n")
+	course01 = int(course01)
 
 	cur.execute(""" INSERT INTO students VALUES first_name = %s, middle_name = %s, last_name = %s, 
-		major01 = %s, major02 = %s, major03 = %s, major04 = %s, major05 = %s, major06 = %s, 
-		major07 = %s, major08 = %s""" [first_name, middle_name, last_name, major01, major02,
-		 major03, major04, major05, major06, major07, major08])
+		major01 = %s, major02 = %s, course01 = %s, course02 = %s, course03 = %s, course04 = %s, 
+		course05 = %s, course06 = %s, course07 = %s, course08 = %s""" [first_name, middle_name, last_name, major01, major02,
+		 course01, course02, course03, course04, course05, course06, course07, course08])
 
 
 def add_minor():
@@ -361,7 +362,7 @@ def first_action():
 	
 	while first_action != 'exit':
 
-		first_action = input('Would you like to add, update, view, or delete?')
+		first_action = input('Would you like to add, update, view, or delete?\n')
 		first_action = str(first_action)
 		
 		if first_action == 'add':
