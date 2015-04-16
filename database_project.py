@@ -49,25 +49,6 @@ def add_student():
 	""" This will allow the user to add a student to the students table."""
 
 	print_null_statement()
-	first_name = input("What is the students first name?\n")
-	middle_name = input("What is the students middle name?\n")
-	last_name = input("What is the students last name?\n")
-	major01 = input("What is the students first major?\n")
-	major02 = input("What is the students second major?\n")
-	minor01 = input("What is the students first minor?\n")
-	minor02 = input("What is the students second minor?\n")
-	gpa = input("What is the students current gpa?\n")
-	id_number = input("What is the students id number?\n")
-	graduation_year = input("What is the scheduled graduation year of the student?\n")
-	advisor_number = input("What is the id number of the advisor of the student?\n")
-	course01 = int(input("What is the first course id the student is taking?\n"))
-	course02 = int(input("What is the second course id the student is taking?\n"))
-	course03 = int(input("What is the third course id the student is taking?\n"))
-	course04 = int(input("What is the fourth course id the student is taking\n"))
-	course05 = int(input("What is the fifth course id the student is taking?\n"))
-	course06 = int(input("What is the sixth course id the student is taking?\n"))
-	course07 = int(input("What is the seventh course id the student is taking?\n"))
-	course08 = int(input("What is the eighth course id the student is taking?\n"))
 	
 	info = []
 	info.append(input("What is the students first name?\n"))
@@ -84,24 +65,17 @@ def add_student():
 
 	for item in range(8):
 	    course = input('Course {} id: '.format(item))
-	    if item course.isdigit():
+	    if course.isdigit():
 	        info.append(int(course))
 	    else:
 	        for num in range(8-item):
 	            info.append(None)
 	        break
- 
 
-    cur.execute("""SQL""", info)
+	info.append(int(input('Course {} id:'.format(item))))
 
-
-	 info.append(int(input('Course {} id:'.format(item)))
-
-	cur.execute(""" INSERT INTO students VALUES first_name = %s, middle_name = %s, last_name = %s, 
-		major01 = %s, major02 = %s, course01 = %s, course02 = %s, course03 = %s, course04 = %s, 
-		course05 = %s, course06 = %s, course07 = %s, course08 = %s""", [first_name, middle_name, last_name, major01, major02,
-		 course01, course02, course03, course04, course05, course06, course07, course08])
-
+	cur.execute(""" INSERT INTO students VALUES 
+		(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""", info)
 
 def add_minor():
 	""" This function will allow the user to add a minor to the minors table."""
