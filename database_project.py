@@ -69,10 +69,37 @@ def add_student():
 	course07 = int(input("What is the seventh course id the student is taking?\n"))
 	course08 = int(input("What is the eighth course id the student is taking?\n"))
 	
+	info = []
+	info.append(input("What is the students first name?\n"))
+	info.append(input("What is the students middle name?\n"))
+	info.append(input("What is the students last name?\n"))
+	info.append(input("What is the students first major?\n"))
+	info.append(input("What is the students second major?\n"))
+	info.append(input("What is the students first minor?\n"))
+	info.append(input("What is the students second minor?\n"))
+	info.append(input("What is the students current gpa?\n"))
+	info.append(input("What is the students id number?\n"))
+	info.append(input("What is the scheduled graduation year of the student?\n"))
+	info.append(input("What is the id number of the advisor of the student?\n"))
+
+	for item in range(8):
+	    course = input('Course {} id: '.format(item))
+	    if item course.isdigit():
+	        info.append(int(course))
+	    else:
+	        for num in range(8-item):
+	            info.append(None)
+	        break
+ 
+
+    cur.execute("""SQL""", info)
+
+
+	 info.append(int(input('Course {} id:'.format(item)))
 
 	cur.execute(""" INSERT INTO students VALUES first_name = %s, middle_name = %s, last_name = %s, 
 		major01 = %s, major02 = %s, course01 = %s, course02 = %s, course03 = %s, course04 = %s, 
-		course05 = %s, course06 = %s, course07 = %s, course08 = %s""" [first_name, middle_name, last_name, major01, major02,
+		course05 = %s, course06 = %s, course07 = %s, course08 = %s""", [first_name, middle_name, last_name, major01, major02,
 		 course01, course02, course03, course04, course05, course06, course07, course08])
 
 
@@ -149,8 +176,8 @@ def view_course():
 def view_student():
 	""" This function will allow users to view details on a particular student."""
 
-	student_id = input("Enter the id of the student you would like to view.\n")
-	cur.execute("""SELECT * FROM students WHERE id = %s""" [student_id])
+	student_id = int(input("Enter the id of the student you would like to view.\n"))
+	cur.execute("""SELECT * FROM students WHERE id = %s""", [student_id])
 
 
 # view details about a professor
