@@ -61,14 +61,14 @@ def add_student():
 	graduation_year = input("What is the scheduled graduation year of the student?\n")
 	advisor_number = input("What is the id number of the advisor of the student?\n")
 	course01 = int(input("What is the first course id the student is taking?\n"))
-	course02 = input("What is the second course id the student is taking?\n")
-	course03 = input("What is the third course id the student is taking?\n")
-	course04 = input("What is the fourth course id the student is taking\n")
-	course05 = input("What is the fifth course id the student is taking?\n")
-	course06 = input("What is the sixth course id the student is taking?\n")
-	course07 = input("What is the seventh course id the student is taking?\n")
-	course08 = input("What is the eighth course id the student is taking?\n")
-	course01 = int(course01)
+	course02 = int(input("What is the second course id the student is taking?\n"))
+	course03 = int(input("What is the third course id the student is taking?\n"))
+	course04 = int(input("What is the fourth course id the student is taking\n"))
+	course05 = int(input("What is the fifth course id the student is taking?\n"))
+	course06 = int(input("What is the sixth course id the student is taking?\n"))
+	course07 = int(input("What is the seventh course id the student is taking?\n"))
+	course08 = int(input("What is the eighth course id the student is taking?\n"))
+	
 
 	cur.execute(""" INSERT INTO students VALUES first_name = %s, middle_name = %s, last_name = %s, 
 		major01 = %s, major02 = %s, course01 = %s, course02 = %s, course03 = %s, course04 = %s, 
@@ -168,7 +168,7 @@ def view():
 
 	while table != 'exit':
 		table = input("What table would you like to view? Choose from"
-			" 'courses', 'students', 'professors', 'major', 'minor', or 'department'.")
+			" 'courses', 'students', 'professors', 'major', 'minor', or 'department'\n.")
 		if table == 'courses':
 			view_course()
 		elif table == 'students':
@@ -233,7 +233,7 @@ def delete():
 
 	while table != 'exit':
 		table = input('What would you like to delete?' " A 'student', 'professor',"
-			" 'department' 'major', 'minor' or a 'course'?")
+			" 'department' 'major', 'minor' or a 'course'?\n")
 
 		if table == 'student':
 			delete_student()
@@ -255,8 +255,8 @@ def update_minor():
 	# 
 
 	minor = input("What minor would you like to update?\n")
-	column = input("What column would you like to update? name, id, or department_id")
-	new_attribute = input("What would you like to change it to?")
+	column = input("What column would you like to update? name, id, or department_id\n")
+	new_attribute = input("What would you like to change it to?\n")
 
 	cur.execute("""UPDATE majors SET column = %s WHERE name = %s""", [new_attribute, name])
 
@@ -270,8 +270,8 @@ def update_major():
 	# 
 
 	major = input("What major would you like to update?\n")
-	column = input("What column would you like to update? name, id, or department_id")
-	new_attribute = input("What would you like to change it to?")
+	column = input("What column would you like to update? name, id, or department_id?\n")
+	new_attribute = input("What would you like to change it to?\n")
 
 	cur.execute("""UPDATE majors SET column = %s WHERE name = %s""", [new_attribute, major])
 
@@ -376,8 +376,6 @@ def first_action():
 		elif first_action == 'view':
 			# view what
 			view()
-		else:
-			first_action()
 
 # start the program
 first_action()
