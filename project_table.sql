@@ -1,3 +1,16 @@
+CREATE TABLE courses
+(
+	time varchar(50) NOT NULL,
+	id int NOT NULL,
+	name varchar(100) NOT NULL,
+	professor_id int NOT NULL,
+	PRIMARY KEY (id, name),
+	FOREIGN KEY (professor_id)
+		REFERENCES professors (id),
+	CHECK (id > 0)
+	
+);
+
 CREATE TABLE professors
 (
 	degree varchar(50) NOT NULL,
@@ -5,7 +18,7 @@ CREATE TABLE professors
 	last_name varchar(250) NOT NULL,
 	first_name varchar(250) NOT NULL,
 	id int NOT NULL,
-	department_id int NOT NULL,
+	department_id varchar(250) NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY (department_id)
 		REFERENCES departments (id),
@@ -17,24 +30,12 @@ CREATE TABLE departments
 	id int NOT NULL,
 	director_id int, -- will have a name from professors
 	name varchar(50) NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (director_id)
-		REFERENCES professors (id),
-	FOREIGN KEY (director_id)
-		REFERENCES professors (id),
-	CHECK (id > 0)
-);
-
-CREATE TABLE courses
-(
-	time varchar(50) NOT NULL,
-	id int NOT NULL,
-	name varchar(100) NOT NULL,
-	professor_id int NOT NULL,
-	PRIMARY KEY (id),
+	PRIMARY KEY (majors, name, minors),
 	FOREIGN KEY (professor_id)
 		REFERENCES professors (id),
-	CHECK (id > 0)	
+	FOREIGN KEY (director_id)
+		REFERENCES professors (id),
+	CHECK (id > 0 AND professor_id > 0)
 );
 
 CREATE TABLE students
@@ -61,8 +62,8 @@ CREATE TABLE students
 	PRIMARY KEY (id),
 	FOREIGN KEY (advisor_id)
 		REFERENCES professors (id),
-	--FOREIGN KEY (course_id01, course_id02, course_id03, course_id04, course_id05, course_id06, course_id07,course_id08)
-	--	REFERENCES courses (id),
+	FOREIGN KEY (course_id01, course_id02, course_id03, course_id04, course_id05, course_id06, course_id07,course_id08)
+		REFERENCES courses (id),
 	CHECK (id > 0 AND graduation_year > 1860 AND advisor_id > 0)
 );
 
