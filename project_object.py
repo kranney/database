@@ -152,7 +152,7 @@ class College:
 		""" Will allow the user to delete a minor from the minors table."""
 
 		with self.connection.cursor() as cur:
-			cur.execute("""DELETE * FROM minors WHERE id = %s""", minor_id)
+			cur.execute("""DELETE * FROM minors WHERE id = (%s)""", minor_id)
 
 		self.commit()
 
