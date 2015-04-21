@@ -1,3 +1,6 @@
+import psycopg2
+from project_object import *
+
 command = ""
 edit_table = ""
 
@@ -192,3 +195,6 @@ while command != 'exit':
 			department_id = input("What is the id of the department you would like to delete?\n"))
 			department_id = int(department_id)
 			delete_department()
+
+if __name__ == '__project_gather_info__':
+	main()
