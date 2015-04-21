@@ -1,5 +1,6 @@
 import psycopg2
 
+
 class College:
 	""" Information about students, professors, courses, and departments"""
 
@@ -205,3 +206,6 @@ class College:
 			cur.execute("""UPDATE minors SET column = (%s) WHERE id = (%s)""", info)
 
 		self.commit()
+
+if __name__ == '__main__':
+	main()
