@@ -199,5 +199,7 @@ def main():
 				department_id = int(department_id)
 				delete_department()
 
+main()
+
 if __name__ == '__main__':
 	main()

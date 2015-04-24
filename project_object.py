@@ -206,7 +206,7 @@ class College:
 			cur.execute("""UPDATE minors SET column = (%s) WHERE id = (%s)""", info)
 
 		self.commit()
-		
+
 	def prompt_info():
 		""" Will prompt the user to enter host, database_name, user, and password."""
 
@@ -214,6 +214,3 @@ class College:
 		database_name = input("What is the database name?\n")
 		user = input("What is your username?\n")
 		password = getpass("What is your password?\n")
-
-if __name__ == '__main__':
-	main()
