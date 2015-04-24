@@ -28,6 +28,11 @@
 -- ALTERNATE KEY (branch_id)
 -- FOREIGN KEY (branch_id)
 
+-- client_cars (client_id, VIN)
+-- PRIMARY KEY (VIN)
+-- ALTERNATE KEY (client_id)
+-- FOREIGN KEY (client_id, VIN)
+
 -- Problem 3
 -- ON PAPER!!!
 
@@ -39,7 +44,7 @@ CREATE TABLE managers
 	name varchar(250) NOT NULL,
 	salary money NOT NULL,
 	branch_id int NOT NULL,
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
 	FOREIGN KEY (branch_id)
 		REFERENCES branches (id)
 );
@@ -49,7 +54,7 @@ CREATE TABLE branches
 	id int NOT NULL,
 	address varchar(250) NOT NULL,
 	phone_number varchar(20) NOT NULL,
-	manager_id int NOT NULL
+	manager_id int NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY manager_id
 		REFERENCES managers (id)
@@ -101,7 +106,7 @@ CREATE TABLE client_invoices
 	invoice_id int NOT NULL,
 	client_id int NOT NULL,
 	PRIMARY KEY (invoice_id),
-	FOREIGN KEY (invoice_id),
+	FOREIGN KEY (invoice_id)
 		REFERENCES invoices (id),
 	FOREIGN KEY (client_id)
 		REFERENCES clients (id)
