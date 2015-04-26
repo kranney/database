@@ -4,7 +4,7 @@ from project_object import *
 command = ""
 edit_table = ""
 
-def main():
+def main(database):
 	""" The entire program collects data from the user."""
 
 	while command != 'exit':
@@ -213,3 +213,4 @@ def main():
 
 if __name__ == '__main__':
 	main()
+	college(databaseconnection)
