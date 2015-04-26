@@ -220,3 +220,4 @@ def prompt_info():
 		except psycopg2.Error as thing:
 			print(thing)
 			exit()
+		return database

@@ -12,7 +12,7 @@ def main():
 		print("Enter 'exit' to exit the program at any time.")
 
 		first_action = input("Would you like to add, update, view, or delete?\n")
-		first_action = str.lower(first_action)
+		first_action = first_action.lower()
 
 		if first_action == 'add':
 			edit_table = input("What table would you like to add to? 'Majors', 'Minors',"
@@ -149,7 +149,7 @@ def main():
 		elif first_action == 'view':
 			edit_table = input("What table would you like to view? 'Majors', 'Minors',"
 				" 'Courses', 'Students', 'Professors', or 'Departments'?\n")
-			edit_table = str.lower(edit_table)
+			edit_table = edit_table.lower()
 
 			if edit_table == 'majors':
 				major_id = input("What is the id of the major you would like to view?\n"))
@@ -209,9 +209,6 @@ def main():
 				department_id = input("What is the id of the department you would like to delete?\n"))
 				department_id = int(department_id)
 				delete_department()
-
-def start_up():
-	""" Make the connection object. """
 
 
 if __name__ == '__main__':
