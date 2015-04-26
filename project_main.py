@@ -212,6 +212,5 @@ def main(database):
 
 
 if __name__ == '__main__':
-	prompt_info()
+	database = College(prompt_info())
 	main()
-	College(databaseconnection)
