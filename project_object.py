@@ -218,6 +218,6 @@ def prompt_info():
 		database = psycopg2.connect(host=host, database=database_name, user=user, password=password)
 
 		try:
-			connection = database
+			database = psycopg2.connect(host=host, database=database_name, user=user, password=password)
 		except psycopg2.Error as thing:
 			print(thing)
