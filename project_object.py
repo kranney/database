@@ -215,4 +215,9 @@ def prompt_info():
 		user = input("What is your username?\n")
 		password = getpass("What is your password?\n")
 
-		return (psycopg2.connect(host=host, database=database_name, user=user, password=password))
+		database = psycopg2.connect(host=host, database=database_name, user=user, password=password)
+
+		try:
+			connection = database
+		except psycopg2.Error as thing:
+			print(thing)
