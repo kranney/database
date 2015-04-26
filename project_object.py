@@ -215,4 +215,4 @@ def prompt_info():
 		user = input("What is your username?\n")
 		password = getpass("What is your password?\n")
 
-		psycopg2.connect(host=host, database=database_name, user=user, password=password)
+		return (psycopg2.connect(host=host, database=database_name, user=user, password=password))
