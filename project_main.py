@@ -17,8 +17,8 @@ def main():
 		if first_action == 'add':
 			edit_table = input("What table would you like to add to? 'Majors', 'Minors',"
 				" 'Courses', 'Students', 'Professors', or 'Departments'?\n")
-			edit_table = str.lower(edit_table)
-	(
+			edit_table = edit_table.lower()
+	
 			if edit_table == 'majors':
 				info = []
 				info.append(input("What is the name of the major?\n"))
@@ -26,6 +26,7 @@ def main():
 				info.append(input("What is the department number this major belongs to?\n"))
 				# collect the information needed
 				# run the add majors method
+				info = info.lower()
 				add_major()
 
 			elif edit_table == 'minors':
@@ -33,6 +34,7 @@ def main():
 				info.append(input("What is the name of the minor?\n"))
 				info.append(input("What is the id number of the minor?\n"))
 				info.append(input("What is the department number this minor belongs to?\n"))
+				info = info.lower()
 				add_minor()
 
 			elif edit_table == 'courses':
@@ -41,6 +43,7 @@ def main():
 				info.append("What is the id number of the course?\n")
 				info.append("What is the name of the course?\n")
 				info.append("What is the id number of the professor teaching the course?\n")
+				info = info.lower()
 				add_course()
 
 			elif edit_table == 'students':
@@ -56,6 +59,7 @@ def main():
 				info.append(input("What is the students id number?\n"))
 				info.append(input("What is the scheduled graduation year of the student?\n"))
 				info.append(input("What is the id number of the advisor of the student?\n"))
+				info = info.lower()
 
 				for item in range(8):
 				    course = input('Course {} id: '.format(item))
@@ -77,6 +81,7 @@ def main():
 				info.append(input("What is the first name of the professor?\n"))
 				info.append(input("What is the id number of the professor?\n"))
 				info.append(input("What is the department number the professor belogns to?\n"))
+				info = info.lower()
 				add_professor()
 
 			elif edit_table == 'departments':
@@ -84,6 +89,7 @@ def main():
 				info.append(input("What is the department id number?\n"))
 				info.append(input("What si the id of the director of the department?\n"))
 				info.append(input("What is the name of the department?\n"))
+				info = info.lower()
 				add_department()
 
 		elif first_action == 'update':
@@ -96,6 +102,7 @@ def main():
 				info.append(input("What major would you like to update?\n"))
 				info.append(input("What column would you like to update? 'name', 'id', or 'department'?\n"))
 				info.append(input("What would you like to change it to?\n"))
+				info = info.lower()
 				update_major()
 
 			elif edit_table == 'minors':
@@ -103,6 +110,7 @@ def main():
 				info.append(input("What minor would you like to update?\n"))
 				info.append(input("What column would you like to update? 'name', 'id', or 'department'?\n"))
 				info.append(input("What would you like to change it to?\n"))
+				info = info.lower()
 				update_minors()
 
 			elif edit_table == 'courses':
@@ -110,6 +118,7 @@ def main():
 				info.append(input("What course would you like to update?\n"))
 				info.append(input("What column would you like to update? 'time, id, name, professor_id?\n"))
 				info.append(input("What would you like to change it to?\n"))
+				info = info.lower()
 				update_course()
 
 			elif edit_table == 'students':
@@ -122,6 +131,7 @@ def main():
 					"'course02', 'course03', 'course04', 'course05', 'course06',"
 					" course07', 'course08'\n"))
 				info.append(input("What would you like to change it to?\n"))
+				info = info.lower()
 				update_student()
 
 			elif edit_table == 'professors':
@@ -130,6 +140,7 @@ def main():
 				info.append(input("What column would you like to update? 'degree', 'pay', "
 					"'last_name, 'first_name', 'id', 'department_id'\n"))
 				info.append(input("What would you like to change it to?\n"))
+				info = info.lower()
 				update_professor()
 
 			elif edit_table == 'departments':
@@ -170,7 +181,7 @@ def main():
 		elif first_action == 'delete':
 			edit_table = input("What table would you like to view? 'Majors', 'Minors',"
 			" 'Courses', 'Students', 'Professors', or 'Departments'?\n")
-			edit_table = str.lower(edit_table)
+			edit_table = edit_table.lower()
 
 			if edit_table == 'majors':
 				major_id = input("What is the id of the major you would like to delete?\n"))
@@ -199,7 +210,9 @@ def main():
 				department_id = int(department_id)
 				delete_department()
 
-main()
+def start_up():
+	""" Make the connection object. """
+
 
 if __name__ == '__main__':
 	main()
