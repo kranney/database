@@ -207,10 +207,12 @@ class College:
 
 		self.commit()
 
-	def prompt_info():
+def prompt_info():
 		""" Will prompt the user to enter host, database_name, user, and password."""
 
 		host = input("What is the host?\n")
 		database_name = input("What is the database name?\n")
 		user = input("What is your username?\n")
 		password = getpass("What is your password?\n")
+
+		psycopg2.connect(host=host, database=database_name, user=user, password=password)
