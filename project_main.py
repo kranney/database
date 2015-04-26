@@ -70,8 +70,8 @@ def main(database):
 				            info.append(None)
 				        break
 
-				info.append(int(input('Course {} id:'.format(item))))))
-				add_student()
+				info.append(int(input('Course {} id:'.format(item)))
+				database.add_student(info)
 
 			elif edit_table == 'professors':
 				info = []

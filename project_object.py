@@ -12,7 +12,9 @@ class College:
 
 		self.connection.commit()
 
-	def add_student(self, info):
+	def add_student(self, first_name, middle_name, last_name, first_major,
+	second_major, first_minor, second_minor, current_gpa, id, graduation_date,
+	advisor_id):
 		"""Will allow the user to add a student to the students table."""
 
 		with self.connection.cursor() as cur:
